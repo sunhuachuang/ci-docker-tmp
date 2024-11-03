@@ -1,5 +1,5 @@
 # Builder
-FROM zyphernetwork/competition:v1 AS base
+FROM zyphernetwork/materials-competition:v1 AS base
 FROM rust:bullseye AS builder
 
 RUN update-ca-certificates
