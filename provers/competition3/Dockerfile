@@ -2,8 +2,9 @@
 FROM rust:bullseye AS builder
 
 RUN update-ca-certificates
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates clang curl libssl-dev pkg-config build-essential
 RUN curl -L https://risczero.com/install | bash
-RUN rzup install
+RUN ~/.risc0/bin/rzup install cpp && ~/.risc0/bin/rzup install risc0
 ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 WORKDIR /prover
