@@ -5,9 +5,6 @@ on:
       name:
         description: 'Prover name'
         required: true
-      address:
-        description: 'Prover address'
-        required: true
       version:
         description: 'Prover version'
         required: true
@@ -49,7 +46,7 @@ jobs:
           file: ./provers/${{ github.event.inputs.name }}/Dockerfile
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.inputs.address }}:v${{ github.event.inputs.version }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.inputs.name }}:v${{ github.event.inputs.version }}
           build-args: RELEASE_VERSION=${{ github.event.inputs.version }}
           ssh: default
 
