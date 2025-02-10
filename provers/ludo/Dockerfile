@@ -14,6 +14,10 @@ RUN git clone https://github.com/zypher-network/pozk-ludo.git && cd pozk-ludo/pr
 # Final image
 FROM debian:bullseye-slim
 
+RUN apt-get update
+RUN apt-get install -y openssl libssl-dev
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /prover
 
 # Copy our build
